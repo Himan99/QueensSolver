@@ -114,5 +114,8 @@ python Tester.py
 - [ ] Adding DFS to core solver as additional mechanism
 - [ ] Export solved boards as images
 
+## License
+
+MIT
 
 
