@@ -1,0 +1,14 @@
+# Byte-compiled / cache files
+__pycache__/
+WebApp/__pycache__/
+*.py[cod]
+WebApp/*.py[cod]
+WebApp/__init__.py
+
+# Virtual environment directories
+venv/
+.env/
+env/
+.venv/
+venv*/
+env*/
