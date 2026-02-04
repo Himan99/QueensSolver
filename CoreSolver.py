@@ -175,17 +175,14 @@ def eliminate_row_column_surrounding_cells_for_each_color(colorMap, board):
 def eliminate_by_contained_regions(colorMap, board):
     rows, cols = len(board), len(board[0])
     
-    # Check for colors completely contained in rows
     for row_subset_size in range(1, rows + 1):
         for start_row in range(rows - row_subset_size + 1):
             end_row = start_row + row_subset_size
-            # Get all colors in this row range
             colors_in_rows = set()
             for i in range(start_row, end_row):
                 for j in range(cols):
                     colors_in_rows.add(board[i][j])
             
-            # Find colors that are completely contained in these rows
             contained_colors = []
             for color in colors_in_rows:
                 all_in_range = True
@@ -197,7 +194,6 @@ def eliminate_by_contained_regions(colorMap, board):
                 if all_in_range and len(colorMap[color]) > 0:
                     contained_colors.append(color)
             
-            # If x colors are contained in x rows, eliminate other colors from those rows
             if len(contained_colors) == row_subset_size and len(contained_colors) > 0:
                 for i in range(start_row, end_row):
                     for j in range(cols):
@@ -207,17 +203,14 @@ def eliminate_by_contained_regions(colorMap, board):
                                 if len(colorMap[color]) > 1:
                                     colorMap[color].remove([i, j])
     
-    # Check for colors completely contained in columns
     for col_subset_size in range(1, cols + 1):
         for start_col in range(cols - col_subset_size + 1):
             end_col = start_col + col_subset_size
-            # Get all colors in this column range
             colors_in_cols = set()
             for i in range(rows):
                 for j in range(start_col, end_col):
                     colors_in_cols.add(board[i][j])
             
-            # Find colors that are completely contained in these columns
             contained_colors = []
             for color in colors_in_cols:
                 all_in_range = True
@@ -229,7 +222,6 @@ def eliminate_by_contained_regions(colorMap, board):
                 if all_in_range and len(colorMap[color]) > 0:
                     contained_colors.append(color)
             
-            # If x colors are contained in x columns, eliminate other colors from those columns
             if len(contained_colors) == col_subset_size and len(contained_colors) > 0:
                 for i in range(rows):
                     for j in range(start_col, end_col):

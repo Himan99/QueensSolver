@@ -5,7 +5,6 @@ import os
 
 
 def load_and_preprocess_image_from_bytes(contents):
-    """Load and preprocess image from bytes (for uploaded files)."""
     np_img = np.frombuffer(contents, np.uint8)
     img = cv2.imdecode(np_img, cv2.IMREAD_COLOR)
     
@@ -125,12 +124,6 @@ def extract_cell_colors(cells):
     return colors
 
 def cluster_colors(color_matrix, threshold=12.0):
-    """
-    Returns:
-      region_ids   : (rows x cols) int matrix
-      cell_colors  : (rows x cols x 3) LAB color per cell (region representative)
-      region_colors: list of LAB colors indexed by region_id
-    """
     rows, cols, _ = color_matrix.shape
 
     region_ids = -np.ones((rows, cols), dtype=int)
@@ -231,7 +224,7 @@ def cell_mean_bgr(cell, margin_ratio=0.2):
     mw = int(w * margin_ratio)
 
     core = cell[mh:h-mh, mw:w-mw]
-    return core.mean(axis=(0, 1))  # BGR
+    return core.mean(axis=(0, 1))
 
 def cluster_cells_bgr(cells, threshold=25.0):
     rows = len(cells)

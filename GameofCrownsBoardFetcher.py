@@ -36,7 +36,7 @@ def gameofcrowns_get_board(challenge_id: int = CHALLENGE_ID, rotate: bool = Fals
     return map_board_to_regions(raw_board)
 
 def rotate_board(board):
-    """Rotates the board 90 degrees clockwise."""
+    """Rotates the board 90 degrees"""
     return [list(reversed(col)) for col in zip(*board)]
 
 if __name__ == "__main__":
